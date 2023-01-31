@@ -1,0 +1,19 @@
+{
+  "database": {},
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "hosting": {
+    "site": "pet-project-web",
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "emulators": {},
+  "remoteconfig": {
+    "template": "remoteconfig.template.json"
+  }
+}
