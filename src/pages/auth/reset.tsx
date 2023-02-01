@@ -11,24 +11,23 @@ const Reset = () => {
 
   useEffect(() => {
     if (loading) return;
-    if (user) router.push("/auth/dashboard");
+    if (user) router.push("/dashboard");
   }, [user, loading]);
 
   return (
-    <div className="reset">
-      <div className="reset__container">
+    <div>
+      <div className="mt-24 flex flex-col flex-wrap content-center justify-center">
         <input
           type="text"
-          className="reset__textBox"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
-        <button className="reset__btn" onClick={() => sendPasswordReset(email)}>
+        <button className="mt-4" onClick={() => sendPasswordReset(email)}>
           Send password reset email
         </button>
         <div>
-          Don't have an account? <Link href="/register">Register</Link> now.
+          Don't have an account? <Link href="/auth/register">Register</Link> now.
         </div>
       </div>
     </div>

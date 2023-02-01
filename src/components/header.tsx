@@ -13,7 +13,7 @@ const Header = () => {
           <p className="text-[13px] uppercase tracking-widest">Logo</p>
         </div>
         <div className="flex items-center">
-          <Menu></Menu>
+          <Menu/>
         </div>
 
         <div className="flex items-center justify-between">

@@ -1,73 +1,59 @@
-// import type { FC, ReactNode } from "react";
-// import { useContext, useEffect, useState } from "react";
-// import { createContext } from "react";
+import type { FC, ReactNode } from "react";
+import { useContext, useEffect, useState } from "react";
+import { createContext } from "react";
+import { useEffectOnce } from "react-use";
 
-// import { TUser } from "../common.types";
-// import {
-//   getAllUsers,
-//   getUserById as getUserByIdRemote,
-//   initRemoteApp,
-//   setNewUser,
-//   signIn,
-//   signOut as remoteSignOut,
-// } from "../functions/user";
-// type ContextState = {
-//   signIn: () => void;
+import { TUser } from "../common.types";
+import {
+  logIn,
+  register,
+  logout,
+} from "../functions/user";
 
-// };
+type ContextState = {
+  user: TUser | null | undefined;
+  signOut: () => void;
+  logIn: (email: any, password: any) => void;
+  register: (name: any, email: any, password: any) => void;
+};
 
-// const UserContext = createContext<ContextState | undefined>(undefined);
+const UserContext = createContext<ContextState | undefined>(undefined);
 
-// type ProviderProps = {
-//   children?: ReactNode;
-// };
+type ProviderProps = {
+  children?: ReactNode;
+};
 
-// const UserProvider: FC<ProviderProps> = ({ children }) => {
-//   const [user, setUser] = useState<TUser | null | undefined>(undefined);
-//   const [users, setUsers] = useState<TUser[]>([]);
+const UserProvider: FC<ProviderProps> = ({ children }) => {
+  const [user, setUser] = useState<TUser | null | undefined>(undefined);
 
-//   initRemoteApp();
+  const signOut = async () => {
+    setUser(null);
+    logout();
+  };
 
-//   const updateUser = async (user: any) => {
-//     setUser((await setNewUser(user)) || null);
-//   };
+  return (
+    <>
+      <UserContext.Provider
+        value={{
+          signOut,
+          user,
+          logIn,
+          register,
+        }}
+      >
+        {children}
+      </UserContext.Provider>
+    </>
+  );
+};
 
-//   const signOut = async () => {
-//     setUser(null);
-//     remoteSignOut();
-//   };
+const useUser = () => {
+  const context = useContext(UserContext);
 
-//   const getUserById = async (id: string) => getUserByIdRemote(id);
+  if (context === undefined) {
+    throw new Error("useComposition must be used within a CompositionProvider");
+  }
+  return context;
+};
 
-//   async function fetchUsersAll() {
-//     const data = await getAllUsers();
-//     setUsers(data);
-//   }
-
-//   useEffect(() => {
-//     fetchUsersAll();
-//   }, []);
-
-//   return (
-//     <>
-//       <UserContext.Provider
-//         value={{
-//           signIn
-//         }}
-//       >
-//         {children}
-//       </UserContext.Provider>
-//     </>
-//   );
-// };
-
-// const useUser = () => {
-//   const context = useContext(UserContext);
-
-//   if (context === undefined) {
-//     throw new Error("useComposition must be used within a CompositionProvider");
-//   }
-//   return context;
-// };
-
-// export { UserProvider, useUser };
+export { UserProvider, useUser };

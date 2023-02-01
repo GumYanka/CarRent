@@ -5,5 +5,5 @@ export type TUser = {
   name: string;
   role: UserRolesEnum;
   photoURL: string;
-  ref?: any;
+  email?:string
 };

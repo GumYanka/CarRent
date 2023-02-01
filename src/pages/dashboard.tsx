@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db, logout } from "../../functions/user";
+import { auth, db, logout } from "../functions/user";
 import { useRouter } from "next/router";
 import { query, collection, getDocs, where } from "firebase/firestore";
 
@@ -23,19 +23,17 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (loading) return;
-    if (!user) router.push("/");
+    if (!user) router.push("/auth/login");
     fetchUserName();
   }, [user, loading]);
 
   return (
-    <div className="dashboard">
-      <div className="dashboard__container">
+    <div>
+      <div>
         Logged in as
-        <div>{name}</div>
+        <div>DASHBOARD</div>
         <div>{user?.email}</div>
-        <button className="dashboard__btn" onClick={logout}>
-          Logout
-        </button>
+        <button onClick={logout}>Logout</button>
       </div>
     </div>
   );

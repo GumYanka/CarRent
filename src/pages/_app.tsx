@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { IntlProvider } from "react-intl";
-
+import { UserProvider } from "../context/user";
 import en from "../../local/en.json";
 import Layout from "../hocs/layout";
 
@@ -26,9 +26,11 @@ export default function App({ Component, pageProps }: AppProps) {
         defaultLocale={defaultLocale}
         messages={messages}
       >
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <UserProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </UserProvider>
       </IntlProvider>
     </>
   );
