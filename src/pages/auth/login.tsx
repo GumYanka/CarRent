@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../context/user";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { auth, signInWithGoogle } from "../../functions/user";
+import { signInWithGoogle } from "../../functions/user";
 
 const Login = () => {
-  const { logIn } = useUser();
+  const { logIn, user } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
 
   useEffect(() => {
-    if (loading) {
+    if (!user) {
       return;
     }
-    if (user) router.push("/dashboard");
-  }, [user, loading]);
+    if (user) router.push("/user-panel");
+  }, [user]);
 
   return (
     <div>
@@ -34,7 +32,12 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
-        <button className="mt-4" onClick={() => logIn(email, password)}>
+        <button
+          className="mt-4"
+          onClick={() => {
+            logIn(email, password);
+          }}
+        >
           Login
         </button>
         <button onClick={signInWithGoogle}>Login with Google</button>

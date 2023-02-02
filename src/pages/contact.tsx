@@ -1,14 +1,14 @@
 import React from "react";
 
-const Dashboard = () => {
+const Contact = () => {
 
   return (
     <div>
       <div>
-        <div>DASHBOARD</div>
+        <div>Contact</div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default Contact;

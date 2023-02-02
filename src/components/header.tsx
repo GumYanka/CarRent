@@ -2,7 +2,7 @@ import { ViewListIcon, XIcon, MenuIcon } from "@heroicons/react/outline";
 import { FC } from "react";
 
 import LanguageSelector from "./language-selector";
-import Menu from "./menu";
+import Menu from "../hocs/menu";
 // import Logo from "./logo";
 
 const Header = () => {
@@ -12,13 +12,10 @@ const Header = () => {
         <div className="flex items-center">
           <p className="text-[13px] uppercase tracking-widest">Logo</p>
         </div>
-        <div className="flex items-center">
-          <Menu/>
-        </div>
 
         <div className="flex items-center justify-between">
+          <Menu />
           <LanguageSelector />
-          <p className="text-[13px] uppercase tracking-widest">user panel</p>
         </div>
       </nav>
     </header>

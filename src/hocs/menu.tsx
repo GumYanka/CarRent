@@ -8,24 +8,35 @@ const Menu = () => {
   const { user } = useUser();
   return (
     <>
+      <Link
+        href="/dashboard"
+        className="text-[13px] uppercase tracking-widest m-3"
+      >
+        About
+      </Link>
+      <Link
+        href="/contact"
+        className="text-[13px] uppercase tracking-widest m-3"
+      >
+        Contact
+      </Link>
       {user && (
-        <>
-          {user.name} {user.role}
-        </>
+        <div className="flex flex-row justify-between">
+          <Link
+            href="/user-panel"
+            className="text-[13px] uppercase tracking-widest m-3"
+          >
+            my account
+          </Link>
+        </div>
       )}
-      {user === null && (
+      {!user && (
         <>
           <Link
             href="/auth/register"
             className="text-[13px] uppercase tracking-widest m-3"
           >
             register
-          </Link>
-          <Link
-            href="/auth/reset"
-            className="text-[13px] uppercase tracking-widest m-3"
-          >
-            reset
           </Link>
           <Link
             href="/auth/login"

@@ -7,7 +7,9 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
+import firebase from "firebase/compat/app";
 import {
   getFirestore,
   query,
@@ -15,7 +17,15 @@ import {
   collection,
   where,
   addDoc,
+  doc,
+  getDoc,
+  updateDoc,
+  setDoc,
+  DocumentReference,
+  DocumentData,
 } from "firebase/firestore";
+import { UserRolesEnum } from "../common.constants";
+import { TUser } from "../common.types";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAfW5RJUb42pw9nMFcjs-y07kOkffv8gow",
@@ -30,6 +40,14 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+
+export type TRemoteUser =
+  | (firebase.User & {
+      name: string;
+      role: string;
+      ref: DocumentReference<DocumentData>;
+    })
+  | null;
 
 const signInWithGoogle = async () => {
   try {
@@ -47,24 +65,21 @@ const signInWithGoogle = async () => {
     }
   } catch (err: any) {
     console.error(err);
-    alert(err.message);
   }
 };
+
+export const onRemoteAuthStateChanged = (nextOrObserver: any) =>
+  onAuthStateChanged(getAuth(), nextOrObserver);
 
 const logIn = async (email: any, password: any) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err: any) {
     console.error(err);
-    alert(err.message);
   }
 };
 
-const register = async (
-  name: any,
-  email: any,
-  password: any
-) => {
+const register = async (name: any, email: any, password: any) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -76,17 +91,37 @@ const register = async (
     });
   } catch (err: any) {
     console.error(err);
-    alert(err.message);
+  }
+};
+
+const updateExistUser = async (
+  user: TRemoteUser
+): Promise<TUser | undefined> => {
+  if (user) {
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(doc(db, "users", user.uid));
+    if (docSnap.exists()) {
+      if (docSnap.data().name !== user?.displayName) {
+        await updateDoc(docRef, { name: user.displayName });
+      }
+      await updateDoc(docRef, { photoURL: user.photoURL });
+
+      return {
+        id: user.uid,
+        ...(docSnap.data() as Pick<TUser, "name" | "role" | "photoURL">),
+        ref: docRef,
+      };
+    }
+  } else {
+    return undefined;
   }
 };
 
 const sendPasswordReset = async (email: any) => {
   try {
     await sendPasswordResetEmail(auth, email);
-    alert("Password reset link sent!");
   } catch (err: any) {
     console.error(err);
-    alert(err.message);
   }
 };
 
@@ -102,4 +137,5 @@ export {
   register,
   sendPasswordReset,
   logout,
+  updateExistUser,
 };

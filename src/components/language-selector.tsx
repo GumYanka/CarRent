@@ -45,7 +45,7 @@ const LanguageSelector = () => {
             {({ checked }:any) => (
               <button
                 className={cn(
-                  "px-2 py-1 text-sm font-medium tracking-widest",
+                  "px-1 py-1 text-[10px] font-medium tracking-widest",
                   checked
                     ? "bg-amber-400 text-white"
                     : "bg-white text-black"

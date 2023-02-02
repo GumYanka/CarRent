@@ -1,22 +1,21 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useUser } from "../../context/user";
-import { auth } from "../../functions/user";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
-  const { register } = useUser();
+  const { register, user } = useUser();
 
   useEffect(() => {
-    if (loading) return;
-    if (user) router.push("/dashboard");
-  }, [user, loading]);
+    if (!user) {
+      return;
+    }
+    if (user) router.push("/user-panel");
+  }, [user]);
 
   return (
     <div>
@@ -42,7 +41,12 @@ const Register = () => {
         />
         <button
           className="mt-4"
-          onClick={() => register(name, email, password)}
+          onClick={() => {
+            register(name, email, password);
+            setEmail("");
+            setPassword("");
+            setName("");
+          }}
         >
           Register
         </button>
