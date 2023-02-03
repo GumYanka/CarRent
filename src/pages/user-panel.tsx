@@ -1,6 +1,8 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useUser } from "../context/user";
+import Card from "../components/common/form";
+import Button from "../components/common/button";
 
 const UserPanel = () => {
   const router = useRouter();
@@ -8,27 +10,24 @@ const UserPanel = () => {
 
   return (
     <div>
+      <Card title="My account info">
       <div className="flex flex-col">
-        Logged in as
-        <div>{user?.email}</div>
-        <button
-          className="bg-yellow-400"
-          onClick={() => {
+        <p className="text-slate-300">Logged in as {user?.email}</p>
+        <Button
+          submit={() => {
             router.push("/auth/login");
             signOut();
           }}
-        >
-          Logout
-        </button>
+          title="Logout"
+        />
         {!user?.phone && !user?.city && !user?.postalCode && !user?.address && (
-          <button
-            className="bg-yellow-400 mt-5"
-            onClick={() => router.push("/auth/full-registration")}
-          >
-            continue full registration
-          </button>
+          <Button
+            submit={() => router.push("/auth/full-registration")}
+            title="continue full registration"
+          />
         )}
       </div>
+      </Card>
     </div>
   );
 };

@@ -3,6 +3,8 @@ import { useUser } from "../../context/user";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { signInWithGoogle } from "../../functions/user";
+import Button from "@/src/components/common/button";
+import Card from "@/src/components/common/form";
 
 const Login = () => {
   const { logIn, user } = useUser();
@@ -18,38 +20,38 @@ const Login = () => {
   }, [user]);
 
   return (
-    <div>
-      <div className="mt-24 flex flex-col flex-wrap content-center justify-center">
+    <Card>
+      <div className="flex flex-col flex-wrap content-center justify-center">
         <input
           type="text"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3 text-white"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
         <input
-          className="mt-4"
+          type="text"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3 text-white"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
-        <button
-          className="mt-4"
-          onClick={() => {
+        <Button
+          submit={() => {
             logIn(email, password);
           }}
-        >
-          Login
-        </button>
-        <button onClick={signInWithGoogle}>Login with Google</button>
+          title="Login"
+        />
+        <p className="text-slate-300 mt-3">Login with <button onClick={signInWithGoogle} className="text-yellow-500">Google</button></p>
         <div>
-          <Link href="/auth/reset">Forgot Password</Link>
+          <Link className="text-slate-300" href="/auth/reset">Forgot Password</Link>
         </div>
-        <div>
-          Don't have an account? <Link href="/auth/register">Register</Link>{" "}
+        <div className="text-slate-300">
+          Don't have an account? <Link href="/auth/register" className="text-yellow-500">Register</Link>{" "}
           now.
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 export default Login;

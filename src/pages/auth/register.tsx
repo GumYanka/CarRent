@@ -1,3 +1,5 @@
+import Button from "@/src/components/common/button";
+import Card from "@/src/components/common/form";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -18,43 +20,43 @@ const Register = () => {
   }, [user]);
 
   return (
-    <div>
-      <div className="mt-24 flex flex-col flex-wrap content-center justify-center">
+    <Card>
+      <div className="flex flex-col flex-wrap content-center justify-center">
         <input
           type="text"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3 text-white"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Full Name"
         />
         <input
-          className="mt-4"
           type="text"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3 text-white"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
         <input
-          className="mt-4"
+          type="text"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3 text-white"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
-        <button
-          className="mt-4"
-          onClick={() => {
+        <Button
+          submit={() => {
             register(name, email, password);
             setEmail("");
             setPassword("");
             setName("");
           }}
-        >
-          Register
-        </button>
-        <div>
-          Already have an account? <Link href="/auth/login">Login</Link> now.
+          title="Register"
+        />
+        <div className="text-slate-300 mt-3">
+          Already have an account? <Link href="/auth/login" className="text-yellow-500">Login</Link> now.
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 export default Register;

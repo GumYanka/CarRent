@@ -39,16 +39,16 @@ const LanguageSelector = () => {
             value={lang}
             key={`language-${lang.locale}-option`}
             className={cn(
-              "overflow-hidden border-amber-400"
+              "overflow-hidden"
             )}
           >
             {({ checked }:any) => (
               <button
                 className={cn(
-                  "px-1 py-1 text-[10px] font-medium tracking-widest",
+                  "px-[2px] py-[2px] text-[10px] font-medium tracking-widest",
                   checked
-                    ? "bg-amber-400 text-white"
-                    : "bg-white text-black"
+                    ? "bg-yellow-500 text-white"
+                    : "text-white"
                 )}
               >
                 {lang.name}

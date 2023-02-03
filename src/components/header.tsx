@@ -3,18 +3,18 @@ import { FC } from "react";
 
 import LanguageSelector from "./language-selector";
 import Menu from "../hocs/menu";
-// import Logo from "./logo";
+import Image from "next/image";
 
 const Header = () => {
   return (
     <header>
-      <nav className="fixed inset-0 z-40 flex h-20 justify-between px-6 py-4 border-b-[1px] border-slate-200">
+      <nav className="fixed inset-0 z-40 h-20 bg-black bg-opacity-25 flex justify-between px-6 py-4 border-b-[1px] border-gray-600">
         <div className="flex items-center">
-          <p className="text-[13px] uppercase tracking-widest">Logo</p>
+        <Image src="/logoAudi.png" width={60} height={50} alt="" />
         </div>
 
         <div className="flex items-center justify-between">
-          <Menu />
+          <Menu/>
           <LanguageSelector />
         </div>
       </nav>

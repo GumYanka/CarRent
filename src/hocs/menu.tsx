@@ -10,13 +10,13 @@ const Menu = () => {
     <>
       <Link
         href="/dashboard"
-        className="text-[13px] uppercase tracking-widest m-3"
+        className="text-[13px] text-white uppercase tracking-widest m-3"
       >
         About
       </Link>
       <Link
         href="/contact"
-        className="text-[13px] uppercase tracking-widest m-3"
+        className="text-[13px] text-white uppercase tracking-widest m-3"
       >
         Contact
       </Link>
@@ -24,7 +24,7 @@ const Menu = () => {
         <div className="flex flex-row justify-between">
           <Link
             href="/user-panel"
-            className="text-[13px] uppercase tracking-widest m-3"
+            className="text-[13px] text-white uppercase tracking-widest m-3"
           >
             my account
           </Link>
@@ -34,13 +34,13 @@ const Menu = () => {
         <>
           <Link
             href="/auth/register"
-            className="text-[13px] uppercase tracking-widest m-3"
+            className="text-[13px] text-white uppercase tracking-widest m-3"
           >
             register
           </Link>
           <Link
             href="/auth/login"
-            className="text-[13px] uppercase tracking-widest m-3"
+            className="text-[13px] text-white uppercase tracking-widest m-3"
           >
             login
           </Link>
