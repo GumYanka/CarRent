@@ -10,10 +10,9 @@ interface FuncProps {
 
 const Layout: FC<FuncProps> = ({ children }) => {
   return (
-    <div className="h-full w-full bg-gradient-to-br">
+    <div className="h-full bg-hero bg-no-repeat bg-cover bg-center bg-fixed w-full bg-[url('../../public/defwr.jpg')]">
       <Header />
-
-      <main className="flex min-h-screen flex-col items-center justify-between pt-20 xl:ml-64">
+      <main className="flex min-h-screen flex-col items-center pt-20">
         {children}
         <Footer></Footer>
       </main>

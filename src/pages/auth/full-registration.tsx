@@ -1,4 +1,6 @@
 import { TUser } from "@/src/common.types";
+import Button from "@/src/components/common/button";
+import Card from "@/src/components/common/form";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -20,12 +22,13 @@ const Register = () => {
   const { name, surname, address, city, phone, postalCode, gender } = formState;
 
   return (
-    <div>
-      <div className="mt-24 flex flex-col flex-wrap content-center justify-center">
+    <Card>
+      <div className="flex flex-col flex-wrap content-center justify-center">
         <input
           type="text"
           value={name}
           name="name"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3"
           onChange={(event) =>
             setFormState({
               ...formState,
@@ -35,10 +38,10 @@ const Register = () => {
           placeholder="Full Name"
         />
         <input
-          className="mt-4"
           type="text"
           value={surname}
           name="surname"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3"
           onChange={(event) =>
             setFormState({
               ...formState,
@@ -48,9 +51,10 @@ const Register = () => {
           placeholder="Surname"
         />
         <input
-          className="mt-4"
+        type="text"
           value={city}
           name="city"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3"
           onChange={(event) =>
             setFormState({
               ...formState,
@@ -60,7 +64,8 @@ const Register = () => {
           placeholder="city"
         />
         <input
-          className="mt-4"
+        type="text"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3"
           value={address}
           name="address"
           onChange={(event) =>
@@ -72,7 +77,8 @@ const Register = () => {
           placeholder="address"
         />
         <input
-          className="mt-4"
+        type="text"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3"
           value={phone}
           name="phone"
           onChange={(event) =>
@@ -84,7 +90,8 @@ const Register = () => {
           placeholder="phone"
         />
         <input
-          className="mt-4"
+        type="text"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3 text-white"
           value={postalCode}
           name="postalCode"
           onChange={(event) =>
@@ -95,16 +102,14 @@ const Register = () => {
           }
           placeholder="postalCode"
         />
-        <button
-          className="mt-4"
-          onClick={() => {
+        <Button
+          submit={() => {
             updateUser(formState);
           }}
-        >
-          Full Register
-        </button>
+          title="Full Register"
+        />
       </div>
-    </div>
+    </Card>
   );
 };
 export default Register;
