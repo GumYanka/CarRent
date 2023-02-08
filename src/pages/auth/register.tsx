@@ -20,7 +20,7 @@ const Register = () => {
   }, [user]);
 
   return (
-    <Card>
+    <Card title="Register">
       <div className="flex flex-col flex-wrap content-center justify-center">
         <input
           type="text"

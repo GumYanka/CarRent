@@ -20,7 +20,7 @@ const Login = () => {
   }, [user]);
 
   return (
-    <Card>
+    <Card title="Login">
       <div className="flex flex-col flex-wrap content-center justify-center">
         <input
           type="text"
@@ -44,7 +44,7 @@ const Login = () => {
         />
         <p className="text-slate-300 mt-3">Login with <button onClick={signInWithGoogle} className="text-yellow-500">Google</button></p>
         <div>
-          <Link className="text-slate-300" href="/auth/reset">Forgot Password</Link>
+          <Link className="text-yellow-500" href="/auth/reset">Forgot Password</Link>
         </div>
         <div className="text-slate-300">
           Don't have an account? <Link href="/auth/register" className="text-yellow-500">Register</Link>{" "}

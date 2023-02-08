@@ -1,3 +1,5 @@
+import Button from "@/src/components/common/button";
+import Card from "@/src/components/common/form";
 import { useUser } from "@/src/context/user";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -15,28 +17,26 @@ const Reset = () => {
   }, [user]);
 
   return (
-    <div>
-      <div className="mt-24 flex flex-col flex-wrap content-center justify-center">
-        <input
+    <Card title="Reset password">
+      <div className="flex flex-col flex-wrap content-center justify-center">
+      <input
           type="text"
+          className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3 text-white"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
-        <button
-          className="mt-4"
-          onClick={() => {
+        <Button
+          submit={() => {
             sendPasswordReset(email);
           }}
-        >
-          Send password reset email
-        </button>
-        <div>
-          Don't have an account? <Link href="/auth/register">Register</Link>{" "}
-          now.
+          title="Continue"
+        />
+        <div className="text-slate-300 mt-3">
+        Don't have an account?<Link href="/auth/register" className="text-yellow-500"> Register</Link> now.
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 export default Reset;

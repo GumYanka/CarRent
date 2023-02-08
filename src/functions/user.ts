@@ -24,8 +24,9 @@ import {
   DocumentReference,
   DocumentData,
 } from "firebase/firestore";
-import { UserRolesEnum } from "../common.constants";
 import { TUser } from "../common.types";
+import { toast } from "react-toastify";
+import { toastMessages } from "../common.messages";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAfW5RJUb42pw9nMFcjs-y07kOkffv8gow",
@@ -63,8 +64,9 @@ const signInWithGoogle = async () => {
         email: user.email,
       });
     }
-  } catch (err: any) {
-    console.error(err);
+    toast.success(toastMessages.logIn.defaultMessage);
+  } catch (err) {
+    toast.error((err as any).code);
   }
 };
 
@@ -74,8 +76,9 @@ export const onRemoteAuthStateChanged = (nextOrObserver: any) =>
 const logIn = async (email: any, password: any) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-  } catch (err: any) {
-    console.error(err);
+    toast.success(toastMessages.logIn.defaultMessage);
+  } catch (err) {
+    toast.error((err as any).code);
   }
 };
 
@@ -89,8 +92,9 @@ const register = async (name: any, email: any, password: any) => {
       authProvider: "local",
       email,
     });
-  } catch (err: any) {
-    console.error(err);
+    toast.success(toastMessages.signUp.defaultMessage);
+  } catch (err) {
+    toast.error((err as any).code);
   }
 };
 
@@ -120,13 +124,19 @@ const updateExistUser = async (
 const sendPasswordReset = async (email: any) => {
   try {
     await sendPasswordResetEmail(auth, email);
-  } catch (err: any) {
-    console.error(err);
+    toast.success(toastMessages.forgotPassword.defaultMessage);
+  } catch (err) {
+    toast.error((err as any).code);
   }
 };
 
 const logout = () => {
-  signOut(auth);
+  try {
+    signOut(auth);
+    toast.success(toastMessages.signOut.defaultMessage);
+  } catch (err) {
+    toast.error((err as any).code);
+  }
 };
 
 export {

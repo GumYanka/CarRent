@@ -21,10 +21,8 @@ const UserPanel = () => {
           title="Logout"
         />
         {!user?.phone && !user?.city && !user?.postalCode && !user?.address && (
-          <Button
-            submit={() => router.push("/auth/full-registration")}
-            title="continue full registration"
-          />
+          
+          <button className="text-yellow-500 mt-3" onClick={() => router.push("/auth/full-registration")}>continue full registration</button>
         )}
       </div>
       </Card>
