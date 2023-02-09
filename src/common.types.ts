@@ -22,17 +22,17 @@ export type TUser = {
 };
 
 export type TCar = {
-  id: string;
-  name: string;
-  shortDesc: string;
-  longDesc: string;
-  price: number;
-  run: string;
-  isFavourite: boolean;
-  available: boolean;
-  color: CarColorEnum[];
-  carType: CarTypeEnum;
-  transmissionId: CarTransmissionEnum;
-  photoCar: string;
-  location: string;
+  id?: string;
+  name?: string;
+  shortDesc?: string;
+  longDesc?: string;
+  price?: [];
+  run?: string;
+  isFavourite?: boolean;
+  available?: boolean;
+  color?: CarColorEnum[];
+  carType?: CarTypeEnum;
+  transmission?: CarTransmissionEnum;
+  photoCar?: string;
+  location?: string;
 };

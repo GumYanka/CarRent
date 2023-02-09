@@ -23,7 +23,7 @@ const Menu = () => {
       {user && (
         <div className="flex flex-row justify-between">
           <Link
-            href="/user-panel"
+            href="/user/user-panel"
             className="text-[13px] text-white uppercase tracking-widest m-3"
           >
             my account

@@ -16,7 +16,7 @@ const Login = () => {
     if (!user) {
       return;
     }
-    if (user) router.push("/user-panel");
+    if (user) router.push("/user/user-panel");
   }, [user]);
 
   return (
