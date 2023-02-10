@@ -7,6 +7,7 @@ interface FuncProps {
   submitBookNow?: () => void;
   title?: string;
   startingPrice?: string;
+  carPhoto:string
 }
 
 const CarCard = ({
@@ -14,16 +15,24 @@ const CarCard = ({
   title,
   startingPrice,
   submitBookNow,
+  carPhoto
 }: FuncProps) => {
   return (
     <Card>
-      <div className="flex flex-col mt-3 px-4">
-        <Image src="/1234.png" width={220} height={203} alt="" />
+      <div className="flex flex-col mt-3 px-4 m-3">
+        <div className="flex-col flex items-center">
+        <Image
+          src={ carPhoto || "/icons/car.png"}
+          width={200}
+          height={100}
+          alt=""
+        />
+        </div>
         <p className="text-[14px] uppercase text-white mt-3">{title}</p>
         <p className="text-[15px] text-white">
-          from{" "}
+          from {" "}
           <span className="text-[17px] text-yellow-500 mt-2">
-            150${startingPrice}
+            $ {startingPrice}
           </span>
         </p>
         <button

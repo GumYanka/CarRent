@@ -26,13 +26,16 @@ export type TCar = {
   name?: string;
   shortDesc?: string;
   longDesc?: string;
-  price?: [];
+  price?: [] | any;
   run?: string;
   isFavourite?: boolean;
   available?: boolean;
-  color?: CarColorEnum[];
-  carType?: CarTypeEnum;
-  transmission?: CarTransmissionEnum;
-  photoCar?: string;
+  color?: CarColorEnum[] | string[];
+  carType?: CarTypeEnum | string;
+  transmission?: CarTransmissionEnum | string;
+  photoCar?: string[];
   location?: string;
+  km?: string;
+  fuelType: string;
+  capacity:string
 };

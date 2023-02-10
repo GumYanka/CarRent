@@ -83,6 +83,9 @@ const logIn = async (email: any, password: any) => {
 };
 
 const register = async (name: any, email: any, password: any) => {
+
+
+  
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -102,8 +105,8 @@ const updateExistUser = async (
   user: TRemoteUser
 ): Promise<TUser | undefined> => {
   if (user) {
-    const docRef = doc(db, "users", user.uid);
-    const docSnap = await getDoc(doc(db, "users", user.uid));
+    const docRef = doc(collection(db, `users/${user?.uid}`));
+    const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       if (docSnap.data().name !== user?.displayName) {
         await updateDoc(docRef, { name: user.displayName });

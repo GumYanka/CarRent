@@ -44,3 +44,15 @@ export const getAllCars = async () => {
 
   return cars;
 };
+
+export const getCarById = async (id: string): Promise<TCar | undefined> => {
+  if (id) {
+    const docRef = doc(db, "cars/", id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return { ...docSnap.data(), id: docSnap.id } as TCar;
+    } else {
+      console.error("No such document!");
+    }
+  }
+};

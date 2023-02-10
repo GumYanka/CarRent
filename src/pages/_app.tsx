@@ -9,6 +9,7 @@ import { UserProvider } from "../context/user";
 import en from "../../local/en.json";
 import Layout from "../hocs/layout";
 import { ToastContainer } from "react-toastify";
+import { CarProvider } from "../context/car";
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -30,10 +31,12 @@ export default function App({ Component, pageProps }: AppProps) {
         messages={messages}
       >
         <UserProvider>
+        <CarProvider>
           <Layout>
             <Component {...pageProps} />
             <ToastContainer theme="dark" autoClose={2000} hideProgressBar={false} closeOnClick />
           </Layout>
+        </CarProvider>
         </UserProvider>
       </IntlProvider>
     </>

@@ -14,7 +14,9 @@ const Layout: FC<FuncProps> = ({ children }) => {
   return (
     <div
       className={`h-full bg-hero bg-no-repeat bg-cover bg-center bg-fixed w-full ${
-        res == "/auth" ? "bg-[url('../../public/defwr.jpg')]" : ""
+        res == "/auth"
+          ? "bg-[url('../../public/defwr.jpg')]"
+          : "bg-[url('../../public/car-rent-photo.jpg')]"
       }`}
     >
       <Header />
