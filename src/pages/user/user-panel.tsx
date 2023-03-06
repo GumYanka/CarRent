@@ -21,9 +21,15 @@ const UserPanel = () => {
                 className="flex flex-col min-w-[80px] items-center"
               >
                 <Image src="/icons/user.png" width={30} height={30} alt="" />
-                <p className="text-[10px] text-center text-slate-300 uppercase tracking-widest pt-2">
-                  {user?.displayName}
-                </p>
+                {user?.displayName && user.displayName.length > 0 ? (
+                  <p className="text-[10px] text-center text-slate-300 uppercase tracking-widest pt-2">
+                    {user?.displayName}
+                  </p>
+                ) : (
+                  <p className="text-[10px] text-center text-slate-300 uppercase tracking-widest pt-2">
+                    No information yet
+                  </p>
+                )}
               </Link>
               <Link
                 href="/car-rental/my-rends"
@@ -45,7 +51,12 @@ const UserPanel = () => {
                 href="/car-rental/cars"
                 className="flex flex-col items-center min-w-[80px]"
               >
-                <Image src="/icons/shopping-cart.png" width={30} height={30} alt="" />
+                <Image
+                  src="/icons/shopping-cart.png"
+                  width={30}
+                  height={30}
+                  alt=""
+                />
                 <p className="text-[10px] text-center text-slate-300 uppercase tracking-widest pt-2">
                   make order
                 </p>

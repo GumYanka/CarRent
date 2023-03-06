@@ -38,7 +38,7 @@ const Cars = () => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-8">
+    <div className="grid grid-cols-3 gap-8 pb-20">
       {allCars?.map((car: any) => (
         <CarCard
           carPhoto={car.photoCar[0]}
@@ -46,9 +46,10 @@ const Cars = () => {
           title={car.name}
           startingPrice={car?.price[0]}
           submitDetails={() => router.push(`/car-rental/${car.id}`)}
+          submitBookNow={() => router.push(`/car-rental/${car.id}/book-now`)}
         ></CarCard>
       ))}
-      <button
+      {/* <button
         onClick={() =>
           setCar({
             name: "MITSUBISHI ASX",
@@ -73,7 +74,7 @@ const Cars = () => {
         }
       >
         new
-      </button>
+      </button> */}
     </div>
   );
 };

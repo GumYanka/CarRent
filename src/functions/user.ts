@@ -8,6 +8,7 @@ import {
   sendPasswordResetEmail,
   signOut,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 import firebase from "firebase/compat/app";
 import {
@@ -27,6 +28,7 @@ import {
 import { TUser } from "../common.types";
 import { toast } from "react-toastify";
 import { toastMessages } from "../common.messages";
+import { UserRolesEnum } from "../common.constants";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAfW5RJUb42pw9nMFcjs-y07kOkffv8gow",
@@ -101,24 +103,81 @@ const register = async (name: any, email: any, password: any) => {
   }
 };
 
-const updateExistUser = async (
-  user: TRemoteUser
+export const createUser = async (userData: any) => {
+  try {
+  const res = await firebase
+          .firestore()
+          .collection("users")
+          .doc(auth?.currentUser?.uid)
+          .update({
+            name:userData.name,
+            email:userData.email,
+            role: "Admin",
+            phone: userData.phone,
+          });
+  //As per your comment below
+
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+
+const updateExistUser = async (user: TRemoteUser | any
 ): Promise<TUser | undefined> => {
   if (user) {
-    const docRef = doc(collection(db, `users/${user?.uid}`));
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      if (docSnap.data().name !== user?.displayName) {
-        await updateDoc(docRef, { name: user.displayName });
-      }
-      await updateDoc(docRef, { photoURL: user.photoURL });
 
-      return {
-        id: user.uid,
-        ...(docSnap.data() as Pick<TUser, "name" | "role" | "photoURL">),
-        ref: docRef,
-      };
-    }
+    var userNow = firebase.auth().currentUser;
+        userNow?.updateProfile({
+        displayName: "Jane Q. User",
+        photoURL: "https://example.com/jane-q-user/profile.jpg"
+      }).then(function() {
+        var displayName = userNow?.displayName;
+        var photoURL = userNow?.photoURL;
+      }, function(error) {
+
+      });
+    // const auth = getAuth();
+    // const docRef = doc(db, 'users', auth.currentUser.uid);
+
+
+// updateProfile(auth.currentUser, {
+//   displayName: user.name, photoURL: user.photoURL, city: user.city, surname: user.surname
+// }).then(() => {
+//   // Profile updated!
+//   // ...
+//   setDoc(docRef, user , { merge: true });
+// }).catch((error) => {
+//   // An error occurred
+//   // ...
+// });
+    // const docRef = doc(collection(db, `users`, id));
+    // console.log('iddd', docRef, id)
+    // const docSnap = await getDoc(docRef);
+    // const updateObject = {
+    //   ...(docSnap.data() as Pick<TUser, "name" | "role" | "photoURL" | 'city' | "address" | "email">),
+    //   ...user,
+    //   ref: docRef,
+    //  role: UserRolesEnum.Manager
+    // }
+
+    // await setDoc(docRef, updateObject, { merge: true });
+
+
+    // if (docSnap.exists()) {
+    //   if (docSnap.data().name !== user?.displayName) {
+    //     await updateDoc(docRef, { name: user.displayName });
+    //   }
+    //   await updateDoc(docRef, { photoURL: user.photoURL });
+
+      // return {
+      //   id: user.uid,
+      //   ...(docSnap.data() as Pick<TUser, "name" | "role" | "photoURL" | 'city' | "address" | "email">),
+      //   ...user,
+      //   ref: docRef,
+      //   role: UserRolesEnum.Manager
+      // };
+    
   } else {
     return undefined;
   }

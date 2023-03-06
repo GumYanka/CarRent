@@ -22,8 +22,8 @@ const Layout: FC<FuncProps> = ({ children }) => {
       <Header />
       <main className="flex min-h-screen flex-col items-center pt-20">
         {children}
-        <Footer></Footer>
       </main>
+      <Footer />
     </div>
   );
 };

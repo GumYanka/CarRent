@@ -1,6 +1,7 @@
 import { TUser } from "@/src/common.types";
 import Button from "@/src/components/common/button";
 import Card from "@/src/components/common/form";
+import { createUser } from "@/src/functions/user";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -51,7 +52,7 @@ const Register = () => {
           placeholder="Surname"
         />
         <input
-        type="text"
+          type="text"
           value={city}
           name="city"
           className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3"
@@ -64,7 +65,7 @@ const Register = () => {
           placeholder="city"
         />
         <input
-        type="text"
+          type="text"
           className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3"
           value={address}
           name="address"
@@ -77,7 +78,7 @@ const Register = () => {
           placeholder="address"
         />
         <input
-        type="text"
+          type="text"
           className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3"
           value={phone}
           name="phone"
@@ -90,7 +91,7 @@ const Register = () => {
           placeholder="phone"
         />
         <input
-        type="text"
+          type="text"
           className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3 text-white"
           value={postalCode}
           name="postalCode"

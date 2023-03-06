@@ -1,12 +1,15 @@
 import Card from "@/src/components/common/form";
+import { useUser } from "@/src/context/user";
 import { useRouter } from "next/router";
 import React from "react";
 import CarCard from "../../components/cars/car";
 
 const UserRends = () => {
   const router = useRouter();
+  const { user } = useUser();
   return (
     <Card>
+      {user?.rends  && (
       <div className="relative overflow-x-auto m-9">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -48,7 +51,8 @@ const UserRends = () => {
                 </tr>
               </tbody>
             </table>
-          </div>
+        </div>
+        )}
     </Card>
   );
 };

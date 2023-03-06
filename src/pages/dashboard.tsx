@@ -6,8 +6,8 @@ const Dashboard = () => {
   const router = useRouter();
   return (
     <>
-      <section className="h-full bg-hero bg-no-repeat bg-cover bg-opacity-50 bg-center mt-[-80px] w-full bg-[url('../../public/dashboard_first.png')]">
-        <div className="mt-[480px] mb-[250px] flex justify-center">
+      <section className="h-full bg-hero bg-no-repeat bg-cover bg-opacity-50 bg-center mt-[-80px] w-full bg-[url('../../public/zzzmin.jpg')]">
+        <div className="mt-[450px] mb-[250px] flex justify-center">
           <button
             onClick={() => router.push("/car-rental/cars")}
             className="bg-[#1c2122] uppercase px-9 py-3 tracking-[2px] text-[14px] text-white border-2 border-white mt-3 border-solid "
@@ -39,25 +39,25 @@ const Dashboard = () => {
         </div>
         <div className="flex justify-between px-[150px] py-16">
           <div className="flex-col">
-            <Image src="/icons/car.png" width={90} height={90} alt="" />
+            <Image src="/icons/car.png" width={60} height={60} alt="" />
             <p className="text-[10px] text-center text-white uppercase tracking-widest pt-2">
               250+ CARS
             </p>
           </div>
           <div className="flex-col">
-            <Image src="/icons/location.png" width={90} height={90} alt="" />
+            <Image src="/icons/locat.png" width={60} height={60} alt="" />
             <p className="text-[10px] text-center text-white uppercase tracking-widest pt-2">
               LOCATION
             </p>
           </div>
           <div className="flex-col">
-            <Image src="/icons/card.png" width={90} height={90} alt="" />
+            <Image src="/icons/card.png" width={60} height={60} alt="" />
             <p className="text-[10px] text-center text-white uppercase tracking-widest pt-2">
               easy payment
             </p>
           </div>
           <div className="flex-col">
-            <Image src="/icons/group.png" width={90} height={90} alt="" />
+            <Image src="/icons/group.png" width={60} height={60} alt="" />
             <p className="text-[10px] text-center text-white uppercase tracking-widest pt-2">
               HAPPY USERS
             </p>
@@ -92,7 +92,7 @@ const Dashboard = () => {
           </div>
           <div className="flex-col text-center">
             <p className="text-[23px] text-white">Medium</p>
-            <Image src="/volkswagen.png" width={220} height={130} alt="" />
+            <Image src="/car-png-39057.png" width={220} height={130} alt="" />
             <p className="text-[17px] text-white mt-2">
               Enter the place and time of collection.
             </p>
@@ -107,12 +107,28 @@ const Dashboard = () => {
         </div>
       </section>
 
-      <section className="flex w-full bg-[#1c2122]">
-        <div className="flex-[0_0_76%] flex-col">
-          <Image src="/black_car.jpeg" width={620} height={303} alt="" />
+      <section className="flex w-full bg-[#293032] ">
+        <div className="flex-[0_0_36%] flex-col">
+          <Image src="/black_car.jpeg" width={520} height={103} alt="" />
         </div>
-        <div className="flex-[0_0_24%] text-white">
-          <p className="text-[38px] text-white tracking-widest">Car Rental</p>
+        <div className="flex-[0_0_64%] justify-start pt-12 text-white flex-col text-center">
+          <p className="text-[38px] text-white tracking-widest">
+            Want to know more?
+          </p>
+          <p className="text-[17px] text-white mt-3">
+            Join the PLATINUM CLUB to get the latest updates from our car care
+            experts
+          </p>
+          <div className="flex mt-3 flex-row justify-center space-x-4 items-center">
+            <input
+              type="text"
+              className="border-solid border-[1px] bg-black bg-opacity-0 h-9 mt-3 text-white"
+              placeholder="E-mail Address"
+            />
+            <button className="bg-none uppercase px-5 py-2 tracking-[2px] text-[11px] text-white border-2 border-white mt-3 border-solid ">
+              submit
+            </button>
+          </div>
         </div>
       </section>
     </>

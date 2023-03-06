@@ -6,11 +6,11 @@ import Image from "next/image";
 
 const AccountInfo = () => {
   const { user } = useUser();
-  console.log(user);
+
   return (
     <div>
       <Card>
-        <div className="flex flex-row space-x-12 m-12">
+        <div className="flex flex-row items-center space-x-12 m-12">
           <div className="flex flex-col space-y-5">
             <div className="flex flex-col items-center">
               <Image
@@ -24,21 +24,23 @@ const AccountInfo = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col space-y-2">
             <div className="text-slate-300 flex mt-2">
               <p>Name: {user?.displayName}</p>
-            </div>
-            <div className="text-slate-300 flex mt-2">
-              <p>Surname: {user?.surname}</p>
             </div>
             <div className="text-slate-300 flex mt-2">
               <p>City: {user?.city}</p>
             </div>
             <div className="text-slate-300 flex mt-2">
-              <p>Street: {user?.address}</p>
+              <p>Postal Code: {user?.postalCode}</p>
+            </div>
+          </div>
+          <div className="flex flex-col space-y-2">
+            <div className="text-slate-300 flex mt-2">
+              <p>Surname: {user?.surname}</p>
             </div>
             <div className="text-slate-300 flex mt-2">
-              <p>Postal Code: {user?.postalCode}</p>
+              <p>Street: {user?.address}</p>
             </div>
             <div className="text-slate-300 flex mt-2">
               <p>Phone: {user?.phone}</p>

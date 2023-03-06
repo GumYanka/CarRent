@@ -1,5 +1,6 @@
 import Button from "@/src/components/common/button";
 import Card from "@/src/components/common/form";
+import { signInWithGoogle } from "@/src/functions/user";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -52,8 +53,18 @@ const Register = () => {
           }}
           title="Register"
         />
+        <button
+          className="bg-[#1c2122] uppercase p-2 tracking-[2px] text-[12px] text-white border-[1px] border-white mt-3 border-solid "
+          onClick={signInWithGoogle}
+        >
+          G
+        </button>
         <div className="text-slate-300 mt-3">
-          Already have an account? <Link href="/auth/login" className="text-yellow-500">Login</Link> now.
+          Already have an account?{" "}
+          <Link href="/auth/login" className="text-yellow-500">
+            Login
+          </Link>{" "}
+          now.
         </div>
       </div>
     </Card>

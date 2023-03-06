@@ -7,7 +7,7 @@ import {
 
 export type TUser = {
   id: string;
-  name?: string;
+  displayName?: string;
   role?: UserRolesEnum;
   photoURL?: string;
   email?: string;
@@ -19,6 +19,7 @@ export type TUser = {
   gender?: string;
   paymentMethod?: boolean;
   ref?: any;
+  rends?: string[] | undefined;
 };
 
 export type TCar = {

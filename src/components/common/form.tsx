@@ -8,7 +8,7 @@ interface FuncProps {
 
 const Card = ({children, title }: FuncProps) => {
   return (
-    <div className="flex flex-col rounded bg-opacity-70 p-5 mt-10 overflow-hidden shadow-lg bg-black">
+    <div className="flex flex-col justify-end rounded bg-opacity-70 p-5 mt-10 overflow-hidden shadow-lg bg-black">
         <div className="flex text-center">
         <p className="text-slate-300">{title}</p>
         </div>

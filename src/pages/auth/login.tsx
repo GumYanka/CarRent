@@ -42,12 +42,22 @@ const Login = () => {
           }}
           title="Login"
         />
-        <p className="text-slate-300 mt-3">Login with <button onClick={signInWithGoogle} className="text-yellow-500">Google</button></p>
-        <div>
-          <Link className="text-yellow-500" href="/auth/reset">Forgot Password</Link>
+        <button
+          className="bg-[#1c2122] uppercase p-2 tracking-[2px] text-[12px] text-white border-[1px] border-white mt-3 border-solid "
+          onClick={signInWithGoogle}
+        >
+          G
+        </button>
+        <div className="mt-2">
+          <Link className="text-yellow-500" href="/auth/reset">
+            Forgot Password
+          </Link>
         </div>
         <div className="text-slate-300">
-          Don't have an account? <Link href="/auth/register" className="text-yellow-500">Register</Link>{" "}
+          Don't have an account?{" "}
+          <Link href="/auth/register" className="text-yellow-500">
+            Register
+          </Link>{" "}
           now.
         </div>
       </div>

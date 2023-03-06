@@ -7,7 +7,6 @@ const Settings = () => {
     <div>
       <div>
         <div>Settings</div>
-        
       </div>
     </div>
   );

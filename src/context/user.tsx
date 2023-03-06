@@ -44,7 +44,7 @@ const UserProvider: FC<ProviderProps> = ({ children }) => {
     logout();
   };
 
-  const updateUser = async (user: any) => {
+  const updateUser = async ( user: any) => {
     setUser((await updateExistUser(user)) || null);
   };
 
